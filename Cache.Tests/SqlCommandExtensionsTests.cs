@@ -1,5 +1,6 @@
 ﻿namespace Cache.Tests
 {
+    using System;
     using System.Data.SqlClient;
     using Cache;
     using NUnit.Framework;
@@ -38,6 +39,13 @@
 
             // assert
             Assert.That(key, Is.EqualTo(command.CommandText));
+        }
+
+        [Test]
+        public void GetCacheKey_GivenNullCommand_ThrowsArgumentNullException()
+        {
+            // assert
+            Assert.Throws<ArgumentNullException>(() => SqlCommandExtensions.GetCacheKey(null));
         }
     }
 }

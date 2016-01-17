@@ -1,5 +1,6 @@
 ﻿namespace Cache
 {
+    using System;
     using System.Data.SqlClient;
     using System.Text;
 
@@ -8,6 +9,11 @@
         // a naïve implementation
         public static string GetCacheKey(this SqlCommand command)
         {
+            if (command == null)
+            {
+                throw new ArgumentNullException(nameof(command));
+            }
+
             if (command.Parameters.Count == 0)
             {
                 return command.CommandText;
