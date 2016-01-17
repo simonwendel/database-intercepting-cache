@@ -8,7 +8,7 @@
     public class SqlCommandExtensionsTests
     {
         [Test]
-        public void GetKey_InvokedOnSqlCommandWithParameters_ReturnsKey()
+        public void GetCacheKey_InvokedOnSqlCommandWithParameters_ReturnsKey()
         {
             // arrange
             var command = new SqlCommand();
@@ -27,7 +27,7 @@
         }
 
         [Test]
-        public void GetKey_InvokedOnSqlCommandWithoutParameters_ReturnsKey()
+        public void GetCacheKey_InvokedOnSqlCommandWithoutParameters_ReturnsKey()
         {
             // arrange
             var command = new SqlCommand();
