@@ -7,7 +7,7 @@
     using NUnit.Framework;
 
     [TestFixture]
-    public partial class CacheableDataReaderTests
+    public partial class CacheableDataReaderTests : IDisposable
     {
         private DataTableReader actualDataReader;
 
@@ -70,6 +70,23 @@
 
             // assert
             Assert.That(reads, Is.True);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (actualDataReader != null)
+                {
+                    actualDataReader.Dispose();
+                }
+            }
         }
     }
 }
