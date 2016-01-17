@@ -3,6 +3,7 @@
     using System;
     using System.Data.SqlClient;
     using System.Text;
+    using static System.FormattableString;
 
     public static class SqlCommandExtensions
     {
@@ -22,10 +23,10 @@
             var sb = new StringBuilder();
             foreach (SqlParameter parameter in command.Parameters)
             {
-                sb.Append($" {{{parameter.ParameterName}: {parameter.Value}}}");
+                sb.Append(Invariant($" {{{parameter.ParameterName}: {parameter.Value}}}"));
             }
 
-            return $"{command.CommandText} --{sb.ToString()}";
+            return Invariant($"{command.CommandText} --{sb.ToString()}");
         }
     }
 }
