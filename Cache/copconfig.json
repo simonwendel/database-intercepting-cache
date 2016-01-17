@@ -1,0 +1,21 @@
+﻿{
+  "Types": [
+    {
+      "TypeName": "System.Data.SqlClient.SqlCommand",
+      "Methods": [
+        {
+          "MethodSignature": "ExecuteReader()",
+          "Interceptors": [ "ReaderCachingInterceptor" ]
+        },
+        {
+          "MethodSignature": "ExecuteScalar()",
+          "Interceptors": [ "ScalarCachingInterceptor" ]
+        }
+      ],
+      "GenericArgumentTypes": [ ]
+    }
+  ],
+  "GlobalInterceptors": [ ],
+  "Key": "",
+  "AssemblyLoadConstraints": [ "System.Data" ]
+}
