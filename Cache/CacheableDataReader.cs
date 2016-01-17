@@ -4,7 +4,6 @@
     using System.Collections;
     using System.Data;
     using System.Data.Common;
-    using System.Data.SqlClient;
     using System.Diagnostics.CodeAnalysis;
 
     [SuppressMessage("Microsoft.Design", "CA1010:CollectionsShouldImplementGenericInterface", Justification = "Won't bother with that.")]
@@ -43,6 +42,14 @@
             get { return dataReader.FieldCount; }
         }
 
+        public override bool HasRows
+        {
+            get
+            {
+                return dataReader.HasRows;
+            }
+        }
+
         public override bool IsClosed
         {
             get { return false; }
@@ -51,14 +58,6 @@
         public override int RecordsAffected
         {
             get { return dataReader.RecordsAffected; }
-        }
-
-        public override bool HasRows
-        {
-            get
-            {
-                return dataReader.HasRows;
-            }
         }
 
         public override object this[string name]
