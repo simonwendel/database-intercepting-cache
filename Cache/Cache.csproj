@@ -55,6 +55,7 @@
     <Compile Include="ScalarCachingInterceptor.cs" />
     <Compile Include="ReaderCachingInterceptor.cs" />
     <Compile Include="SqlCommandExtensions.cs" />
+    <Compile Include="TypeResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="copconfig.json">
