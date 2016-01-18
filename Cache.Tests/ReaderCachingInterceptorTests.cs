@@ -7,7 +7,7 @@
     using Moq;
     using NUnit.Framework;
 
-    [TestFixture]
+    [TestFixture, Category("ReaderCachingInterceptor")]
     public class ReaderCachingInterceptorTests
     {
         [Test]

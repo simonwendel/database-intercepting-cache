@@ -4,7 +4,7 @@
     using CodeCop.Core.Contracts;
     using NUnit.Framework;
 
-    [TestFixture]
+    [TestFixture, Category("TypeResolver")]
     public class TypeResolverTests
     {
         [Test]
