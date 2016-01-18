@@ -52,6 +52,12 @@
   <ItemGroup>
     <Content Include="Database.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cache\Cache.csproj">
+      <Project>{4dcb484f-4289-4360-83f2-d5c114fee4fa}</Project>
+      <Name>Cache</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

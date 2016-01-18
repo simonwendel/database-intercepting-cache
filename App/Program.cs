@@ -7,6 +7,8 @@
     {
         private static void Main()
         {
+            Cache.Injector.Start();
+
             var connectionString = @"Data Source=(LocalDb)\v11.0;Initial Catalog=InvisiblyCachedDatabase;Integrated Security=True";
             var queryString = "SELECT ActualData FROM TableOfData;";
 
