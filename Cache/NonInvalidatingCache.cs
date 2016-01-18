@@ -3,7 +3,7 @@
     using System;
     using System.Data.SqlClient;
 
-    internal class DictionaryCache : ICache
+    internal class NonInvalidatingCache : ICache
     {
         public object CacheSqlDataReader(SqlCommand command, Func<object> fallback)
         {
