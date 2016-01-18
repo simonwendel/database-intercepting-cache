@@ -5,7 +5,7 @@
     using static System.FormattableString;
     using System.Text;
 
-    public static class SqlCommandExtensions
+    internal static class SqlCommandExtensions
     {
         // a naïve implementation
         public static string GetCacheKey(this SqlCommand command)
