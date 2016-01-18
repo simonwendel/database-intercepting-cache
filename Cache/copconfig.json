@@ -6,10 +6,6 @@
         {
           "MethodSignature": "ExecuteReader()",
           "Interceptors": [ "ReaderCachingInterceptor" ]
-        },
-        {
-          "MethodSignature": "ExecuteScalar()",
-          "Interceptors": [ "ScalarCachingInterceptor" ]
         }
       ],
       "GenericArgumentTypes": [ ]

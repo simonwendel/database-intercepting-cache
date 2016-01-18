@@ -14,7 +14,7 @@
             var registeredAspects = TypeResolver.ResolveAll<ICopIntercept>();
 
             // assert
-            Assert.That(registeredAspects.Count(), Is.EqualTo(2));
+            Assert.That(registeredAspects.Count(), Is.EqualTo(1));
         }
 
         [Test]

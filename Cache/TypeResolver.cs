@@ -13,7 +13,6 @@
         public TypeResolver()
         {
             kernel = new StandardKernel();
-            kernel.Bind<ICopIntercept>().To<ScalarCachingInterceptor>();
             kernel.Bind<ICopIntercept>().To<ReaderCachingInterceptor>();
         }
 
