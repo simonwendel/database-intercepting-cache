@@ -3,8 +3,8 @@
     using System;
     using NUnit.Framework;
 
-    [TestFixture, Category("NonInvalidatingCache")]
-    public class NonInvalidatingCacheTests
+    [TestFixture, Category("NonExpiringCache")]
+    public class NonExpiringCacheTests
     {
         [Test]
         public void Ctor_GivenNullStorage_ThrowsException()
