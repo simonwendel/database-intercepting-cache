@@ -39,10 +39,10 @@
             var command = context.Sender as SqlCommand;
             var parameters = context.Parameters.Select(x => x.Value).ToArray();
 
-            // worst case scenario
-            Func<object> fallback = () => context.InterceptedMethod.Execute(command, parameters);
+            // query to run if we actually want to hit the database
+            Func<object> query = () => context.InterceptedMethod.Execute(command, parameters);
 
-            return cache.CacheSqlDataReader(command, fallback);
+            return cache.CacheSqlDataReader(command, query);
         }
     }
 }

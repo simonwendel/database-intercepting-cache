@@ -5,6 +5,6 @@
 
     internal interface ICache
     {
-        object CacheSqlDataReader(SqlCommand command, Func<object> fallback);
+        object CacheSqlDataReader(SqlCommand command, Func<object> query);
     }
 }

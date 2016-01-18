@@ -17,7 +17,7 @@
             this.storage = storage;
         }
 
-        public object CacheSqlDataReader(SqlCommand command, Func<object> fallback)
+        public object CacheSqlDataReader(SqlCommand command, Func<object> query)
         {
             throw new NotImplementedException();
         }
