@@ -80,12 +80,9 @@
 
         protected virtual void Dispose(bool disposing)
         {
-            if (disposing)
+            if (disposing && actualDataReader != null)
             {
-                if (actualDataReader != null)
-                {
-                    actualDataReader.Dispose();
-                }
+                actualDataReader.Dispose();
             }
         }
     }
