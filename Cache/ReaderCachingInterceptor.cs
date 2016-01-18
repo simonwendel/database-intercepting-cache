@@ -4,8 +4,18 @@
     using CodeCop.Core;
     using CodeCop.Core.Contracts;
 
-    internal class ReaderCachingInterceptor : ICopOverride
+    internal class ReaderCachingInterceptor : ICopIntercept, ICopOverride
     {
+        public void OnAfterExecute(InterceptionContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnBeforeExecute(InterceptionContext context)
+        {
+            throw new NotImplementedException();
+        }
+
         public object OnOverride(InterceptionContext context)
         {
             throw new NotImplementedException();

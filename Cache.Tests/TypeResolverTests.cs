@@ -8,23 +8,13 @@
     public class TypeResolverTests
     {
         [Test]
-        public void ResolveAllOfT_GivenICopOverride_ReturnsRegisteredOverrideAspects()
-        {
-            // act
-            var registeredAspects = TypeResolver.ResolveAll<ICopOverride>();
-
-            // assert
-            Assert.That(registeredAspects.Count(), Is.EqualTo(0));
-        }
-
-        [Test]
         public void ResolveAllOfT_GivenICopIntercept_ReturnsRegisteredInterceptorAspects()
         {
             // act
             var registeredAspects = TypeResolver.ResolveAll<ICopIntercept>();
 
             // assert
-            Assert.That(registeredAspects.Count(), Is.EqualTo(0));
+            Assert.That(registeredAspects.Count(), Is.EqualTo(2));
         }
 
         [Test]

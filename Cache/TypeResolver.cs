@@ -1,6 +1,7 @@
 ﻿namespace Cache
 {
     using System.Collections.Generic;
+    using CodeCop.Core.Contracts;
     using Ninject;
 
     internal class TypeResolver
@@ -12,6 +13,8 @@
         public TypeResolver()
         {
             kernel = new StandardKernel();
+            kernel.Bind<ICopIntercept>().To<ScalarCachingInterceptor>();
+            kernel.Bind<ICopIntercept>().To<ReaderCachingInterceptor>();
         }
 
         public static TypeResolver Instance
