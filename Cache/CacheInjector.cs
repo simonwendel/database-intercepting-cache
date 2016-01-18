@@ -3,7 +3,7 @@
     using CodeCop.Core;
     using CodeCop.Core.Contracts;
 
-    public class Injector
+    public static class Injector
     {
         /// <summary>
         /// Starts the injection of all cache objects to intercept database calls. Will take some time on the 
