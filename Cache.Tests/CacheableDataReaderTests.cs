@@ -6,6 +6,11 @@
     using Moq;
     using NUnit.Framework;
 
+    /*
+     * I wanted to test the getters on the CacheableDataReader class, but there are too many of them to fit 
+     * all tests in one file. Therefore I made it partial and put the getter tests in the file 
+     * CacheableDataReaderTests.Getters.cs
+     */
     [TestFixture]
     public partial class CacheableDataReaderTests : IDisposable
     {
