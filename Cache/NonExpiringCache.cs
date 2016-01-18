@@ -19,6 +19,16 @@
 
         public object CacheSqlDataReader(SqlCommand command, Func<object> query)
         {
+            if (command == null)
+            {
+                throw new ArgumentNullException(nameof(command));
+            }
+
+            if (query == null)
+            {
+                throw new ArgumentNullException(nameof(query));
+            }
+
             throw new NotImplementedException();
         }
     }
