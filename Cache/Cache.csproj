@@ -51,7 +51,7 @@
     <Compile Include="CacheableDataReader.cs" />
     <Compile Include="CacheInjector.cs" />
     <Compile Include="IKeyValueStore.cs" />
-    <Compile Include="NonInvalidatingCache.cs" />
+    <Compile Include="NonExpiringCache.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="ICache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

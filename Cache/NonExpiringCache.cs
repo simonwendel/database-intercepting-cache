@@ -3,11 +3,11 @@
     using System;
     using System.Data.SqlClient;
 
-    internal class NonInvalidatingCache : ICache
+    internal class NonExpiringCache : ICache
     {
         private IKeyValueStore storage;
 
-        public NonInvalidatingCache(IKeyValueStore storage)
+        public NonExpiringCache(IKeyValueStore storage)
         {
             if (storage == null)
             {

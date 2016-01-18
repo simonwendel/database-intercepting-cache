@@ -15,7 +15,7 @@
         {
             kernel = new StandardKernel();
             kernel.Bind<ICopIntercept>().To<ReaderCachingInterceptor>();
-            kernel.Bind<ICache>().To<NonInvalidatingCache>();
+            kernel.Bind<ICache>().To<NonExpiringCache>();
         }
 
         public static TypeResolver Instance

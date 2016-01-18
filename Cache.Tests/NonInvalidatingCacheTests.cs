@@ -10,7 +10,7 @@
         public void Ctor_GivenNullStorage_ThrowsException()
         {
             // assert
-            Assert.Throws<ArgumentNullException>(() => new NonInvalidatingCache(null));
+            Assert.Throws<ArgumentNullException>(() => new NonExpiringCache(null));
         }
     }
 }
