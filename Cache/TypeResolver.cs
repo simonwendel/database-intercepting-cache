@@ -1,10 +1,11 @@
 ﻿namespace Cache
 {
+    using System;
     using System.Collections.Generic;
     using CodeCop.Core.Contracts;
     using Ninject;
 
-    internal class TypeResolver
+    internal class TypeResolver : IDisposable
     {
         private static TypeResolver instance;
 
@@ -27,6 +28,20 @@
         public static IEnumerable<T> ResolveAll<T>()
         {
             return Instance.kernel.GetAll<T>();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing && kernel != null)
+            {
+                kernel.Dispose();
+            }
         }
     }
 }
