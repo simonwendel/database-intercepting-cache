@@ -2,8 +2,8 @@
 {
     using System;
     using System.Data.SqlClient;
-    using System.Text;
     using static System.FormattableString;
+    using System.Text;
 
     public static class SqlCommandExtensions
     {
