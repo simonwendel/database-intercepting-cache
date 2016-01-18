@@ -26,14 +26,14 @@
         }
 
         [Test]
-        public void Ctor_WhenGivenNullReader_ThrowsException()
+        public void Ctor_GivenNullReader_ThrowsException()
         {
             // assert
             Assert.Throws<ArgumentNullException>(() => new CacheableDataReader(null));
         }
 
         [Test]
-        public void Ctor_WhenGivenReader_SetsDataTableLocale()
+        public void Ctor_GivenReader_SetsDataTableLocale()
         {
             // act
             new CacheableDataReader(mockDataReader.Object);

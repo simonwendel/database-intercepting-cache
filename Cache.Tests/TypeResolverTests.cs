@@ -18,7 +18,7 @@
         }
 
         [Test]
-        public void Instance_WhenInvoked_ShouldReturnSingleton()
+        public void Instance_Invoked_ShouldReturnSingleton()
         {
             // act
             var firstInstance = TypeResolver.Instance;
