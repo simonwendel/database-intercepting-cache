@@ -7,7 +7,7 @@
     public class ReaderCachingInterceptorTests
     {
         [Test]
-        public void OnBeforeExecute_WhenInvoked_ShouldDoNothing()
+        public void OnBeforeExecute_Invoked_DoesNothing()
         {
             // arrange
             var sut = new ReaderCachingInterceptor();
@@ -17,7 +17,7 @@
         }
 
         [Test]
-        public void OnAfterExecute_WhenInvoked_ShouldDoNothing()
+        public void OnAfterExecute_Invoked_DoesNothing()
         {
             // arrange
             var sut = new ReaderCachingInterceptor();
@@ -27,7 +27,7 @@
         }
 
         [Test] // might be integration testing CodeCop, whatever...
-        public void OnOverride_WhenInvokedOnNull_ShouldThrowException()
+        public void OnOverride_InvokedOnNull_ThrowsException()
         {
             // arrange
             var sut = new ReaderCachingInterceptor();
