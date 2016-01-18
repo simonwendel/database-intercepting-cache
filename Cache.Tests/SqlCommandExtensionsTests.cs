@@ -42,7 +42,7 @@
         }
 
         [Test]
-        public void GetCacheKey_GivenNullCommand_ThrowsArgumentNullException()
+        public void GetCacheKey_GivenNullCommand_ThrowsException()
         {
             // assert
             Assert.Throws<ArgumentNullException>(() => SqlCommandExtensions.GetCacheKey(null));
