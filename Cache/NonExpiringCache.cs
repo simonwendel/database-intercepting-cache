@@ -5,9 +5,9 @@
 
     internal class NonExpiringCache : ICache
     {
-        private IKeyValueStore storage;
+        private IBackingStore storage;
 
-        public NonExpiringCache(IKeyValueStore storage)
+        public NonExpiringCache(IBackingStore storage)
         {
             if (storage == null)
             {
