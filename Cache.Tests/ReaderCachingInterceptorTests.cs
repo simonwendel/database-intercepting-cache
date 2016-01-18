@@ -58,7 +58,7 @@
             var expectedReturn = new object();
 
             cacheMock
-                .Setup(x => x.CacheSqlDataReader(It.IsAny<SqlCommand>(), It.IsAny<Func<object>>()))
+                .Setup(x => x.GetSqlDataReader(It.IsAny<SqlCommand>(), It.IsAny<Func<object>>()))
                 .Returns(expectedReturn);
 
             var sut = new ReaderCachingInterceptor(cacheMock.Object);
@@ -70,7 +70,7 @@
             Assert.That(actualReturn, Is.SameAs(expectedReturn));
 
             cacheMock.Verify(
-                x => x.CacheSqlDataReader(It.IsAny<SqlCommand>(), It.IsAny<Func<object>>()),
+                x => x.GetSqlDataReader(It.IsAny<SqlCommand>(), It.IsAny<Func<object>>()),
                 Times.Once());
         }
     }

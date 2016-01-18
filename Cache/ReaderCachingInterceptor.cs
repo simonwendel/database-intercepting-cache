@@ -42,7 +42,7 @@
             // query to run if we actually want to hit the database
             Func<object> query = () => context.InterceptedMethod.Execute(command, parameters);
 
-            return cache.CacheSqlDataReader(command, query);
+            return cache.GetSqlDataReader(command, query);
         }
     }
 }

@@ -17,7 +17,7 @@
             this.storage = storage;
         }
 
-        public object CacheSqlDataReader(SqlCommand command, Func<object> query)
+        public object GetSqlDataReader(SqlCommand command, Func<object> query)
         {
             if (command == null)
             {

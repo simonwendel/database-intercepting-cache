@@ -16,23 +16,23 @@
         }
 
         [Test]
-        public void CacheSqlDataReader_GivenNullCommand_ThrowsException()
+        public void GetSqlDataReader_GivenNullCommand_ThrowsException()
         {
             // arrange
             var sut = new NonExpiringCache(Mock.Of<IBackingStore>());
 
             // assert
-            Assert.Throws<ArgumentNullException>(() => sut.CacheSqlDataReader(null, () => new object()));
+            Assert.Throws<ArgumentNullException>(() => sut.GetSqlDataReader(null, () => new object()));
         }
 
         [Test]
-        public void CacheSqlDataReader_GivenNullQuery_ThrowsException()
+        public void GetSqlDataReader_GivenNullQuery_ThrowsException()
         {
             // arrange
             var sut = new NonExpiringCache(Mock.Of<IBackingStore>());
 
             // assert
-            Assert.Throws<ArgumentNullException>(() => sut.CacheSqlDataReader(new SqlCommand(), null));
+            Assert.Throws<ArgumentNullException>(() => sut.GetSqlDataReader(new SqlCommand(), null));
         }
     }
 }
