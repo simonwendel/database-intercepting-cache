@@ -15,6 +15,7 @@
         {
             kernel = new StandardKernel();
             kernel.Bind<ICopIntercept>().To<ReaderCachingInterceptor>();
+            kernel.Bind<ICache>().To<DictionaryCache>();
         }
 
         public static TypeResolver Instance

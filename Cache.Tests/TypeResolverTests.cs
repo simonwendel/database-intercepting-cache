@@ -18,6 +18,16 @@
         }
 
         [Test]
+        public void ResolveAllOfT_GivenICache_ReturnsRegisteredCacheImplementation()
+        {
+            // act
+            var registeredCaches = TypeResolver.ResolveAll<ICache>();
+
+            // assert
+            Assert.That(registeredCaches.Count(), Is.EqualTo(1));
+        }
+
+        [Test]
         public void Instance_Invoked_ShouldReturnSingleton()
         {
             // act
