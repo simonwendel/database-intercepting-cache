@@ -1,6 +1,7 @@
 ﻿namespace Cache
 {
     using System;
+    using System.Data.Common;
     using System.Data.SqlClient;
 
     internal class NonExpiringCache : ICache
@@ -17,7 +18,7 @@
             this.storage = storage;
         }
 
-        public object GetSqlDataReader(SqlCommand command, Func<object> query)
+        public DbDataReader GetDataReader(SqlCommand command, Func<DbDataReader> query)
         {
             if (command == null)
             {
@@ -32,12 +33,14 @@
             var key = command.GetCacheKey();
             if (storage.ContainsKey(key))
             {
-                return storage.Get(key);
+                return (DbDataReader)storage.Get(key);
             }
 
             var results = query();
-            storage.Add(key, results);
-            return results;
+            var cacheableReader = new CacheableDataReader(results);
+            storage.Add(key, cacheableReader);
+
+            return cacheableReader;
         }
     }
 }

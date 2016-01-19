@@ -1,10 +1,11 @@
 ﻿namespace Cache
 {
     using System;
+    using System.Data.Common;
     using System.Data.SqlClient;
 
     internal interface ICache
     {
-        object GetSqlDataReader(SqlCommand command, Func<object> query);
+        DbDataReader GetDataReader(SqlCommand command, Func<DbDataReader> query);
     }
 }

@@ -1,6 +1,8 @@
 ﻿namespace Cache.Tests
 {
     using System;
+    using System.Data;
+    using System.Data.Common;
     using System.Data.SqlClient;
     using Moq;
     using NUnit.Framework;
@@ -22,7 +24,7 @@
             var sut = new NonExpiringCache(Mock.Of<IBackingStore>());
 
             // assert
-            Assert.Throws<ArgumentNullException>(() => sut.GetSqlDataReader(null, () => new object()));
+            Assert.Throws<ArgumentNullException>(() => sut.GetDataReader(null, () => new MockDataReader()));
         }
 
         [Test]
@@ -32,7 +34,7 @@
             var sut = new NonExpiringCache(Mock.Of<IBackingStore>());
 
             // assert
-            Assert.Throws<ArgumentNullException>(() => sut.GetSqlDataReader(new SqlCommand(), null));
+            Assert.Throws<ArgumentNullException>(() => sut.GetDataReader(new SqlCommand(), null));
         }
 
         [Test]
@@ -47,7 +49,7 @@
             var sut = new NonExpiringCache(storeMock.Object);
 
             // act
-            sut.GetSqlDataReader(new SqlCommand(), () => new object());
+            sut.GetDataReader(new SqlCommand(), () => new MockDataReader());
 
             // assert
             storeMock.Verify(
@@ -59,7 +61,7 @@
         public void GetSqlDataReader_GivenCachedCommand_ReturnsCachedResult()
         {
             // arrange
-            var expected = new object();
+            var expected = new MockDataReader();
 
             var storeMock = new Mock<IBackingStore>();
             storeMock
@@ -73,7 +75,7 @@
             var sut = new NonExpiringCache(storeMock.Object);
 
             // act
-            var actual = sut.GetSqlDataReader(new SqlCommand(), () => new object());
+            var actual = sut.GetDataReader(new SqlCommand(), () => new MockDataReader());
 
             // assert
             Assert.That(actual, Is.SameAs(expected));
@@ -88,9 +90,9 @@
         {
             // arrange
             var queryWasCalled = false;
-            var expected = new object();
+            var expected = new MockDataReader();
 
-            Func<object> query = () => { queryWasCalled = true; return expected; };
+            Func<DbDataReader> query = () => { queryWasCalled = true; return expected; };
 
             var storeMock = new Mock<IBackingStore>();
             storeMock
@@ -98,15 +100,15 @@
                 .Returns(false);
 
             storeMock
-                .Setup(x => x.Add(It.IsAny<string>(), It.IsAny<object>()));
+                .Setup(x => x.Add(It.IsAny<string>(), It.IsAny<DbDataReader>()));
 
             var sut = new NonExpiringCache(storeMock.Object);
 
             // act
-            var actual = sut.GetSqlDataReader(new SqlCommand(), query);
+            var actual = sut.GetDataReader(new SqlCommand(), query);
 
             // assert
-            Assert.That(actual, Is.SameAs(expected));
+            Assert.That(actual, Is.InstanceOf<CacheableDataReader>());
             Assert.That(queryWasCalled, Is.True);
         }
 
@@ -114,9 +116,8 @@
         public void GetSqlDataReader_GivenNonCachedCommand_StoresResult()
         {
             // arrange
-            var expected = new object();
-
-            Func<object> query = () => expected;
+            var expected = new MockDataReader();
+            Func<DbDataReader> query = () => expected;
 
             var storeMock = new Mock<IBackingStore>();
             storeMock
@@ -124,16 +125,16 @@
                 .Returns(false);
 
             storeMock
-                .Setup(x => x.Add(It.IsAny<string>(), It.IsAny<object>()));
+                .Setup(x => x.Add(It.IsAny<string>(), It.IsAny<DbDataReader>()));
 
             var sut = new NonExpiringCache(storeMock.Object);
 
             // act
-            var actual = sut.GetSqlDataReader(new SqlCommand(), query);
+            var actual = sut.GetDataReader(new SqlCommand(), query);
 
             // assert
             storeMock.Verify(
-                x => x.Add(It.IsAny<string>(), It.Is<object>(o => o.Equals(expected))),
+                x => x.Add(It.IsAny<string>(), It.IsAny<DbDataReader>()),
                 Times.Once());
         }
     }

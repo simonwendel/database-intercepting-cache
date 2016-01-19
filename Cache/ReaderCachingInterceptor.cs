@@ -1,6 +1,7 @@
 ﻿namespace Cache
 {
     using System;
+    using System.Data.Common;
     using System.Data.SqlClient;
     using System.Linq;
     using CodeCop.Core;
@@ -40,9 +41,9 @@
             var parameters = context.Parameters.Select(x => x.Value).ToArray();
 
             // query to run if we actually want to hit the database
-            Func<object> query = () => context.InterceptedMethod.Execute(command, parameters);
+            Func<DbDataReader> query = () => (DbDataReader)context.InterceptedMethod.Execute(command, parameters);
 
-            return cache.GetSqlDataReader(command, query);
+            return cache.GetDataReader(command, query);
         }
     }
 }

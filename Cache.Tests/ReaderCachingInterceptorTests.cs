@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Common;
     using System.Data.SqlClient;
     using CodeCop.Core;
     using Moq;
@@ -55,10 +56,10 @@
             context.Parameters = new List<Parameter>(new[] { new Parameter { Value = 2 } });
 
             var cacheMock = new Mock<ICache>();
-            var expectedReturn = new object();
+            var expectedReturn = new MockDataReader();
 
             cacheMock
-                .Setup(x => x.GetSqlDataReader(It.IsAny<SqlCommand>(), It.IsAny<Func<object>>()))
+                .Setup(x => x.GetDataReader(It.IsAny<SqlCommand>(), It.IsAny<Func<DbDataReader>>()))
                 .Returns(expectedReturn);
 
             var sut = new ReaderCachingInterceptor(cacheMock.Object);
@@ -70,7 +71,7 @@
             Assert.That(actualReturn, Is.SameAs(expectedReturn));
 
             cacheMock.Verify(
-                x => x.GetSqlDataReader(It.IsAny<SqlCommand>(), It.IsAny<Func<object>>()),
+                x => x.GetDataReader(It.IsAny<SqlCommand>(), It.IsAny<Func<DbDataReader>>()),
                 Times.Once());
         }
     }
