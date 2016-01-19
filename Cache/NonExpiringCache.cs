@@ -29,7 +29,15 @@
                 throw new ArgumentNullException(nameof(query));
             }
 
-            throw new NotImplementedException();
+            var key = command.GetCacheKey();
+            if (storage.ContainsKey(key))
+            {
+                return storage.Get(key);
+            }
+
+            var results = query();
+            storage.Add(key, results);
+            return results;
         }
     }
 }
