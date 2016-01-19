@@ -3,7 +3,7 @@
     using System;
     using System.Data.SqlClient;
     using System.Diagnostics;
-    using System.Globalization;
+    using static System.FormattableString;
 
     internal class Program
     {
@@ -20,7 +20,7 @@
                 DoDatabaseStuff();
                 sw.Stop();
 
-                Console.WriteLine($"That took: {sw.ElapsedMilliseconds} milliseconds to perform.");
+                Console.WriteLine(Invariant($"That took: {sw.ElapsedMilliseconds} milliseconds to perform."));
             }
 
             Console.ReadKey();
@@ -39,7 +39,7 @@
                 {
                     while (reader.Read())
                     {
-                        Console.WriteLine(string.Format(CultureInfo.CurrentCulture, "{0}", reader[0]));
+                        Console.WriteLine(Invariant($"{reader[0]}"));
                     }
                 }
             }
