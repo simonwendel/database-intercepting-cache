@@ -137,5 +137,25 @@
                 x => x.Add(It.IsAny<string>(), It.IsAny<DbDataReader>()),
                 Times.Once());
         }
+
+        [Test]
+        public void GetSqlDataReader_WhenBackingStoreThrows_ReThrowsException()
+        {
+            // arrange
+            var expected = new ApplicationException();
+
+            var storeMock = new Mock<IBackingStore>();
+            storeMock
+                .Setup(x => x.ContainsKey(It.IsAny<string>()))
+                .Returns(false);
+
+            storeMock
+                .Setup(x => x.Add(It.IsAny<string>(), It.IsAny<DbDataReader>())).Throws(expected);
+
+            var sut = new NonExpiringCache(storeMock.Object);
+
+            // assert
+            Assert.Throws(Is.SameAs(expected), () => sut.GetDataReader(new SqlCommand(), () => new MockDataReader()));
+        }
     }
 }

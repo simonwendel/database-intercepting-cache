@@ -36,11 +36,24 @@
                 return (DbDataReader)storage.Get(key);
             }
 
-            var results = query();
-            var cacheableReader = new CacheableDataReader(results);
-            storage.Add(key, cacheableReader);
+            CacheableDataReader cacheableReader = null;
+            try
+            {
+                var results = query();
+                cacheableReader = new CacheableDataReader(results);
+                storage.Add(key, cacheableReader);
 
-            return cacheableReader;
+                return cacheableReader;
+            }
+            catch
+            {
+                if (cacheableReader != null)
+                {
+                    cacheableReader.Dispose();
+                }
+
+                throw;
+            }
         }
     }
 }
