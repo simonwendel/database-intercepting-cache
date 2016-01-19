@@ -70,6 +70,13 @@
             get { return dataReader[i]; }
         }
 
+        [SuppressMessage("Microsoft.Usage", "CA1816:CallGCSuppressFinalizeCorrectly", Justification = "We're not disposing here.")]
+        [SuppressMessage("Microsoft.Usage", "CA2213:DisposableFieldsShouldBeDisposed", MessageId = "cachedData", Justification = "We can not let clients dispose this, or all is lost.")]
+        [SuppressMessage("Microsoft.Usage", "CA2213:DisposableFieldsShouldBeDisposed", MessageId = "dataReader", Justification = "We can not let clients dispose this, or all is lost.")]
+        public static new void Dispose()
+        {
+        }
+
         public override void Close()
         {
             Reset();
@@ -213,13 +220,6 @@
         public void Reset()
         {
             dataReader = new DataTableReader(cachedData);
-        }
-
-        [SuppressMessage("Microsoft.Usage", "CA1816:CallGCSuppressFinalizeCorrectly", Justification = "We're not disposing here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2213:DisposableFieldsShouldBeDisposed", MessageId = "cachedData", Justification = "We can not let clients dispose this, or all is lost.")]
-        [SuppressMessage("Microsoft.Usage", "CA2213:DisposableFieldsShouldBeDisposed", MessageId = "dataReader", Justification = "We can not let clients dispose this, or all is lost.")]
-        public new void Dispose()
-        {
         }
 
         private void ExplicitlyDispose()
