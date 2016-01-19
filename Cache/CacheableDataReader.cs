@@ -107,6 +107,7 @@
             return dataReader.GetChars(i, fieldoffset, buffer, bufferoffset, length);
         }
 
+        [SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "i", Justification = "Just keeping semantics with base.")]
         public new IDataReader GetData(int i)
         {
             return dataReader.GetData(i);
