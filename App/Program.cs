@@ -1,6 +1,8 @@
 ﻿namespace App
 {
+    using System;
     using System.Data.SqlClient;
+    using System.Diagnostics;
     using System.Globalization;
 
     internal class Program
@@ -9,6 +11,23 @@
         {
             Cache.Injector.Start();
 
+            var sw = new Stopwatch();
+
+            var repeats = 5;
+            for (int i = 0; i < repeats; ++i)
+            {
+                sw.Restart();
+                DoDatabaseStuff();
+                sw.Stop();
+
+                Console.WriteLine($"That took: {sw.ElapsedMilliseconds} ms to perform.");
+            }
+
+            Console.ReadKey();
+        }
+
+        private static void DoDatabaseStuff()
+        {
             var connectionString = @"Data Source=(LocalDb)\v11.0;Initial Catalog=InvisiblyCachedDatabase;Integrated Security=True";
             var queryString = "SELECT ActualData FROM TableOfData;";
 
@@ -20,12 +39,10 @@
                 {
                     while (reader.Read())
                     {
-                        System.Console.WriteLine(string.Format(CultureInfo.CurrentCulture, "{0}", reader[0]));
+                        Console.WriteLine(string.Format(CultureInfo.CurrentCulture, "{0}", reader[0]));
                     }
                 }
             }
-
-            System.Console.ReadKey();
         }
     }
 }
