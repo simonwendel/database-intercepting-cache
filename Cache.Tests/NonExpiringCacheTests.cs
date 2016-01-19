@@ -1,7 +1,6 @@
 ﻿namespace Cache.Tests
 {
     using System;
-    using System.Data;
     using System.Data.Common;
     using System.Data.SqlClient;
     using Moq;
