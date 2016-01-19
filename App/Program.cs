@@ -20,7 +20,7 @@
                 DoDatabaseStuff();
                 sw.Stop();
 
-                Console.WriteLine($"That took: {sw.ElapsedMilliseconds} ms to perform.");
+                Console.WriteLine($"That took: {sw.ElapsedMilliseconds} milliseconds to perform.");
             }
 
             Console.ReadKey();
