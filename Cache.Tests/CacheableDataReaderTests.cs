@@ -11,7 +11,7 @@
      * all tests in one file. Therefore I made it partial and put the getter tests in the file 
      * CacheableDataReaderTests.Getters.cs
      */
-    [TestFixture, Category("CacheableDataReader")]
+    [TestFixture]
     public partial class CacheableDataReaderTests : IDisposable
     {
         private DataTableReader actualDataReader;

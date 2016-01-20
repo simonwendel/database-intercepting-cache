@@ -5,7 +5,7 @@
     using Cache;
     using NUnit.Framework;
 
-    [TestFixture, Category("SqlCommandExtensions")]
+    [TestFixture]
     public class SqlCommandExtensionsTests
     {
         [Test]

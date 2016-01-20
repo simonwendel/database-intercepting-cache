@@ -6,7 +6,7 @@
     using Moq;
     using NUnit.Framework;
 
-    [TestFixture, Category("NonExpiringCache")]
+    [TestFixture]
     public class NonExpiringCacheTests
     {
         [Test]

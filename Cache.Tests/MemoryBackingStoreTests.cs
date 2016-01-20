@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using NUnit.Framework;
 
-    [TestFixture, Category("MemoryBackingStore")]
+    [TestFixture]
     public class MemoryBackingStoreTests
     {
         [Test]
