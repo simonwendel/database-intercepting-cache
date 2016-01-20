@@ -29,7 +29,7 @@
         private static void DoDatabaseStuff()
         {
             var connectionString = @"Data Source=(LocalDb)\v11.0;Initial Catalog=InvisiblyCachedDatabase;Integrated Security=True";
-            var queryString = "SELECT ActualData FROM TableOfData;";
+            var queryString = "WAITFOR DELAY '00:00:01';SELECT ActualData FROM TableOfData;";
 
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand(queryString, connection))
