@@ -11,7 +11,7 @@
         /// </summary>
         public static void Start()
         {
-            Cop.Intercept(TypeResolver.ResolveAll<ICopIntercept>());
+            Cop.Intercept(TypeResolver.Instance.ResolveAll<ICopIntercept>());
         }
     }
 }

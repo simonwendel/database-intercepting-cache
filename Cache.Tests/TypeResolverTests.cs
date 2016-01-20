@@ -10,8 +10,11 @@
         [Test]
         public void ResolveAllOfT_GivenICopIntercept_ReturnsRegisteredInterceptorAspects()
         {
+            // arrange
+            var sut = new TypeResolver();
+
             // act
-            var registeredAspects = TypeResolver.ResolveAll<ICopIntercept>();
+            var registeredAspects = sut.ResolveAll<ICopIntercept>();
 
             // assert
             Assert.That(registeredAspects.Count(), Is.EqualTo(1));
@@ -20,8 +23,11 @@
         [Test]
         public void ResolveAllOfT_GivenICache_ReturnsRegisteredCacheImplementation()
         {
+            // arrange
+            var sut = new TypeResolver();
+
             // act
-            var registeredCaches = TypeResolver.ResolveAll<ICache>();
+            var registeredCaches = sut.ResolveAll<ICache>();
 
             // assert
             Assert.That(registeredCaches.Count(), Is.EqualTo(1));
@@ -36,6 +42,19 @@
 
             // assert
             Assert.That(firstInstance, Is.SameAs(secondInstance));
+        }
+
+        [Test]
+        public void Dispose_InvokedTwice_ShouldNotThrow()
+        {
+            // arrange
+            var sut = new TypeResolver();
+
+            // act
+            sut.Dispose();
+
+            // assert
+            Assert.DoesNotThrow(() => sut.Dispose());
         }
     }
 }

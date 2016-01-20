@@ -15,8 +15,8 @@
         {
             kernel = new StandardKernel();
             kernel.Bind<ICopIntercept>().To<ReaderCachingInterceptor>();
-            kernel.Bind<ICache>().To<NonExpiringCache>();
-            kernel.Bind<IBackingStore>().To<MemoryBackingStore>();
+            kernel.Bind<ICache>().To<NonExpiringCache>().InSingletonScope();
+            kernel.Bind<IBackingStore>().To<MemoryBackingStore>().InSingletonScope();
         }
 
         public static TypeResolver Instance
@@ -27,9 +27,9 @@
             }
         }
 
-        public static IEnumerable<T> ResolveAll<T>()
+        public IEnumerable<T> ResolveAll<T>()
         {
-            return Instance.kernel.GetAll<T>();
+            return kernel.GetAll<T>();
         }
 
         public void Dispose()
