@@ -11,7 +11,8 @@
         /// </summary>
         public static void Start()
         {
-            Cop.Intercept(TypeResolver.Instance.ResolveAll<ICopIntercept>());
+            var resolver = new TypeResolver();
+            Cop.Intercept(resolver.ResolveAll<ICopIntercept>());
         }
     }
 }

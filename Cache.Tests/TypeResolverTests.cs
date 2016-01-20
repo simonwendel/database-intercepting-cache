@@ -34,17 +34,6 @@
         }
 
         [Test]
-        public void Instance_Invoked_ShouldReturnSingleton()
-        {
-            // act
-            var firstInstance = TypeResolver.Instance;
-            var secondInstance = TypeResolver.Instance;
-
-            // assert
-            Assert.That(firstInstance, Is.SameAs(secondInstance));
-        }
-
-        [Test]
         public void Dispose_InvokedTwice_ShouldNotThrow()
         {
             // arrange

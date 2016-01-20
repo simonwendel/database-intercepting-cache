@@ -7,8 +7,6 @@
 
     internal class TypeResolver : IDisposable
     {
-        private static TypeResolver instance;
-
         private IKernel kernel;
 
         public TypeResolver()
@@ -17,14 +15,6 @@
             kernel.Bind<ICopIntercept>().To<ReaderCachingInterceptor>();
             kernel.Bind<ICache>().To<NonExpiringCache>().InSingletonScope();
             kernel.Bind<IBackingStore>().To<MemoryBackingStore>().InSingletonScope();
-        }
-
-        public static TypeResolver Instance
-        {
-            get
-            {
-                return instance ?? (instance = new TypeResolver());
-            }
         }
 
         public IEnumerable<T> ResolveAll<T>()
