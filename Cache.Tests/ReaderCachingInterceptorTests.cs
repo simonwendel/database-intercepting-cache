@@ -12,14 +12,14 @@
     public class ReaderCachingInterceptorTests
     {
         [Test]
-        public void Ctor_InvokedWithNullCache_ThrowsException()
+        public void Ctor_GivenNullCache_ThrowsException()
         {
             // assert
             Assert.Throws<ArgumentNullException>(() => new ReaderCachingInterceptor(null));
         }
 
         [Test]
-        public void OnBeforeExecute_Invoked_DoesNothing()
+        public void OnBeforeExecute_Always_DoesNothing()
         {
             // arrange
             var sut = new ReaderCachingInterceptor(Mock.Of<ICache>());
@@ -29,7 +29,7 @@
         }
 
         [Test]
-        public void OnAfterExecute_Invoked_DoesNothing()
+        public void OnAfterExecute_Always_DoesNothing()
         {
             // arrange
             var sut = new ReaderCachingInterceptor(Mock.Of<ICache>());
@@ -39,7 +39,7 @@
         }
 
         [Test] // might be integration testing CodeCop, whatever...
-        public void OnOverride_InvokedOnNull_ThrowsException()
+        public void OnOverride_GivenNullContext_ThrowsException()
         {
             // arrange
             var sut = new ReaderCachingInterceptor(Mock.Of<ICache>());
