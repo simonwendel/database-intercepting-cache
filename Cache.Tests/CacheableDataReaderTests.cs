@@ -69,7 +69,7 @@
         }
 
         [Test]
-        public void Read_CalledAfterClose_ShouldAlwaysWork()
+        public void Read_WhenCalledAfterClose_ShouldAlwaysWork()
         {
             // arrange
             var sut = new CacheableDataReader(actualDataReader);
