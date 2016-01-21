@@ -30,6 +30,12 @@
             actualDataReader = new DataTableReader(BuildDataTable());
         }
 
+        [TearDown]
+        public void Teardown()
+        {
+            Dispose();
+        }
+
         [Test]
         public void Ctor_GivenNullReader_ThrowsException()
         {
