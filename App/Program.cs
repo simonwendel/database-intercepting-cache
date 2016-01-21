@@ -26,6 +26,9 @@
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Hits the database, simulating a long running query.
+        /// </summary>
         private static void DoDatabaseStuff()
         {
             var connectionString = @"Data Source=(LocalDb)\v11.0;Initial Catalog=InvisiblyCachedDatabase;Integrated Security=True";
