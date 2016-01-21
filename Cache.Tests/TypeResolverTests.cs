@@ -34,7 +34,7 @@
         }
 
         [Test]
-        public void Dispose_CalledTwice_ShouldNotThrow()
+        public void Dispose_WhenCalledTwice_ShouldNotThrow()
         {
             // arrange
             var sut = new TypeResolver();
