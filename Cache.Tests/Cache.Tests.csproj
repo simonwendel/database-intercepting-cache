@@ -68,12 +68,14 @@
     <Compile Include="CacheableDataReaderTests.cs" />
     <Compile Include="CacheableDataReaderTests.Getters.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="InjectorTests.cs" />
     <Compile Include="MemoryBackingStoreTests.cs" />
     <Compile Include="MockDataReader.cs" />
     <Compile Include="NonExpiringCacheTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReaderCachingInterceptorTests.cs" />
     <Compile Include="SqlCommandExtensionsTests.cs" />
+    <Compile Include="TestCategory.cs" />
     <Compile Include="TypeResolverTests.cs" />
   </ItemGroup>
   <ItemGroup>
